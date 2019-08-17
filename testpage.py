@@ -14,9 +14,9 @@ def initial_redirect():
 @app.route('/addnotes', methods = ['POST', 'GET'])
 def add_notes():
 	notes = request.form['notes']
-	date = time.strftime("%m-%d-%Y")
+	date = time.strftime("%m-%d-%Y-%H-%M-%S")
 	subject = request.form['subject']
-	with open(f"./templates/notes/{subject}:{date}.txt", "w") as f:
+	with open(f"./templates/notes/{subject}:{date}.txt", "a") as f:
 		f.write(notes)
 	return initial_redirect()
 
@@ -30,8 +30,9 @@ def note_list():
 #update with its own template and not just spit out a return
 @app.route('/open/<file>')
 def open_file(file):
-	with open(f"./templates/notes/{file}", 'a') as f:
-		return f"<div style='white-space: pre-wrap;'>{f.read()}</div>"
+	files = []
+	files.append(file)
+	return render_template('subject.html', files = files)
 
 @app.route('/subject', methods = ['POST', 'GET'])
 def open_class():
