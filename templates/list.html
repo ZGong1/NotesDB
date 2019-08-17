@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>List of notes</title>
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/style.css') }}">
+        {% include 'header.html' %}
+    </head>
+    <body>
+        <h1>Open Notes for a Class</h1>
+
+        <form action="{{url_for('open_class')}}" method=POST>
+            <select name="subject">
+                <option value="AP Physics">AP Physics</option>
+                <option value="Honors Chemistry">Honors Chemistry</option>
+                <option value="Spanish III">Spanish III</option>
+                <option value="AP Euro History">AP Euro History</option>
+                <option value="AP Calculus AB">AP Calculus AB</option>
+                <option value="AP English Language">AP English Language</option>
+                <option value="AP CSP">AP CSP</option>
+            </select> 
+            <button type="submit">Open notes for this class</button>
+        </form>
+
+        <br><br><br>
+        <h1>Archived Files:</h1>
+        {% for item in files %}
+            <a href="/open/{{item}}">
+                {{item}}
+            </a>
+            <br>
+        {% endfor %}
+    </body>
+    </html>

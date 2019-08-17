@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title>Notes Database</title>
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/style.css') }}">
+        {% include 'header.html' %}
+    </head>
+    <body>
+        
+        <form method=POST action= {{ url_for('add_notes') }} >
+            <select name="subject">
+                <option value="AP Physics">AP Physics</option>
+                <option value="Honors Chemistry">Honors Chemistry</option>
+                <option value="Spanish III">Spanish III</option>
+                <option value="AP Euro History">AP Euro History</option>
+                <option value="AP Calculus AB">AP Calculus AB</option>
+                <option value="AP English Language">AP English Language</option>
+                <option value="AP CSP">AP CSP</option>
+              </select> 
+            <h2>Notes</h2>
+            <textarea name='notes' value='notes'></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </body>
+</html>

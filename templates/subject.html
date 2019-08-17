@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <title>Class Notes</title>
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/style.css') }}">
+        {% include 'header.html' %}
+    </head>
+    <body>
+        {% for item in files %}
+        <h1>
+            {{item}}
+        </h1>
+            <div style='white-space: pre-wrap;'>
+                {% include 'notes/' ~ item %}
+            </div>
+        {% endfor %}
+    </body>
+</html>
