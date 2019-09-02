@@ -1,12 +1,14 @@
 <html>
     <body>
         <div class="header">
-                <a href="{{url_for('initial_redirect')}}" class='headera'>
-                        <button class='headerbutton'>Add Notes</button>
-                </a>
                 <a href="{{url_for('note_list')}}" class='headera'>
                     <button class='headerbutton'>Note List</button>
                 </a>
+                {% if session['secret'] == 'ZGong' %}
+                <a href="/addpage" class='headera'>
+                        <button class='headerbutton'>Add Notes</button>
+                </a>
+                {% endif %}
         </div>
     </body>
 </html>

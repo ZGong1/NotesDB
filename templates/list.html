@@ -19,6 +19,12 @@
             </select> 
             <button type="submit">Open notes for this class</button>
         </form>
+        
+        <form action="/addsecret" method=POST>
+            Secret:
+            <input type="text" name='secret'>
+            <button type="submit">Submit</button>
+        </form>
 
         <br><br><br>
         <h1>Archived Files:</h1>
@@ -26,6 +32,15 @@
             <a href="/open/{{item}}">
                 {{item}}
             </a>
+
+            {% if session['secret'] == 'ZGong' %}
+            <a href="/edit/{{item}}">
+                <button>
+                    Edit
+                </button>
+            </a>
+            {% endif %}
+
             <br>
         {% endfor %}
     </body>
