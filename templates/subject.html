@@ -7,7 +7,7 @@
     <body>
         {% for item in files %}
         <h1>
-            {{item}}
+            <a href='/open/{{item}}'> {{item}} </a>
         </h1>
             <div style='white-space: pre-wrap; text-align: left; '>
                 {% include 'notes/' ~ item %}
