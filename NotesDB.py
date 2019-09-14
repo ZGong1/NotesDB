@@ -75,5 +75,5 @@ def add_secret():
 
 #sets up the flask app
 if __name__ == '__main__':
-    app.config['SECRET_KEY'] = 'kH3kQ6K2lQVNIunuiWyGAboNbzbldzb6'
+    app.config['SECRET_KEY'] = 'secret unicode string'
     app.run(host="0.0.0.0", port=25110)
