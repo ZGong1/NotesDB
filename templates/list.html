@@ -3,6 +3,16 @@
         <title>List of notes</title>
         <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/style.css') }}">
         {% include 'header.html' %}
+
+        <script>
+            function disapear() {
+            if(document.getElementById("toDisapear").style.display == "") 
+              document.getElementById("toDisapear").style.display = "none";
+            else
+              document.getElementById("toDisapear").style.display = "";
+          }
+        </script>
+
     </head>
     <body>
         <h1>Open Notes for a Class</h1>
@@ -27,21 +37,24 @@
         </form>
 
         <br><br><br>
-        <h1>Archived Files:</h1>
-        {% for item in files %}
-            <a href="/open/{{item}}">
-                {{item}}
-            </a>
 
-            {% if session['secret'] == 'Insert custom secret' %}
-            <a href="/edit/{{item}}">
-                <button>
-                    Edit
-                </button>
-            </a>
-            {% endif %}
+        <button onclick="disapear()">Toggle File List</button>
+        <div id="toDisapear" style="display:none;">
+            <h1>Archived Files:</h1>
+            {% for item in files %}
+                <a href="/open/{{item}}">
+                    {{item}}
+                </a>
+                {% if session['secret'] == 'ZGong' %}
+                <a href="/edit/{{item}}">
+                    <button>
+                        Edit
+                    </button>
+                </a>
+                {% endif %}
+                <br>
+            {% endfor %}
+        </div>
 
-            <br>
-        {% endfor %}
     </body>
     </html>
